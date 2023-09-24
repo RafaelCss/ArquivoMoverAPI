@@ -4,6 +4,6 @@ namespace api_documentos.Model
     {
         public DateOnly? Date { get; set; }
 
-        public string NomeArquivo { get; set; }
+        public required string NomeArquivo { get; set; }
     }
 }

@@ -474,11 +474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\api-documentos\\api-documentos.csproj",
+      "projectUniqueName": "C:\\Projetos\\ArquivoMoverAPI\\api-documentos.csproj",
       "projectName": "api-documentos",
-      "projectPath": "C:\\Projetos\\api-documentos\\api-documentos.csproj",
+      "projectPath": "C:\\Projetos\\ArquivoMoverAPI\\api-documentos.csproj",
       "packagesPath": "C:\\Users\\rf201\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\api-documentos\\obj\\",
+      "outputPath": "C:\\Projetos\\ArquivoMoverAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rf201\\AppData\\Roaming\\NuGet\\NuGet.Config",

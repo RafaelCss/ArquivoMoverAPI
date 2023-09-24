@@ -27,9 +27,18 @@ public class GeradorPdfsController : ControllerBase
         {
             var file = Request.Form.Files[0];
             if (file == null || file.Length == 0)
-                return BadRequest("Arquivo não encontrado");
+                return BadRequest("Arquivo nï¿½o encontrado");
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory() , "arquivos" , file.FileName);
+            // Obter o caminho completo para o diretï¿½rio de arquivos
+            var arquivosDirectory = Path.Combine(Directory.GetCurrentDirectory() , "arquivos");
+
+            // Criar o diretï¿½rio se ele nï¿½o existir
+            if (!Directory.Exists(arquivosDirectory))
+            {
+                Directory.CreateDirectory(arquivosDirectory);
+            }
+
+            var filePath = Path.Combine(arquivosDirectory , file.FileName);
 
             using (var stream = new FileStream(filePath , FileMode.Create))
             {
@@ -51,7 +60,7 @@ public class GeradorPdfsController : ControllerBase
     {
         try
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory() , "arquivos" , fileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "arquivos", fileName);
             var fileBytes = System.IO.File.ReadAllBytes(filePath);
 
             var contentType = "application/pdf";
@@ -60,13 +69,13 @@ public class GeradorPdfsController : ControllerBase
                 FileName = fileName
             };
 
-            Response.Headers.Add("Content-Disposition" , contentDisposition.ToString());
-            return File(fileBytes , contentType);
+            Response.Headers.Add("Content-Disposition", contentDisposition.ToString());
+            return File(fileBytes, contentType);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex , "Erro ao fornecer o arquivo PDF");
-            return StatusCode(500 , "Erro interno do servidor");
+            _logger.LogError(ex, "Erro ao fornecer o arquivo PDF");
+            return StatusCode(500, "Erro interno do servidor");
         }
     }
 
